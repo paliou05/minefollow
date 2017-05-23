@@ -7,10 +7,12 @@ auth.set_access_token("4178185372-Eq4HWoHZtOu1e8uizQhvEKF8ylRAqmBAf7zN2LK", "cC7
 api = tweepy.API(auth)
 
 first_tweet = api.user_timeline("paliourg")
-#print type(first_tweet)
-followers = first_tweet[0]
-print followers
-#print first_tweet.text
-#print first_tweet.id
-#results = api.retweets(first_tweet.followers)
-#print results
+
+retweet = first_tweet[0]
+retweet_id = retweet.retweeted_status.id
+original_tweet = api.get_status(retweet_id)
+print original_tweet
+
+
+
+
