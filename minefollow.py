@@ -15,11 +15,17 @@ retweet_id = retweet.retweeted_status.id_str
 original_tweet = api.get_status(retweet_id)
 #print original_tweet
 
-#Get the retweeted ids
+#Get the retweeted screen_names
 retweet_ids = api.retweets(original_tweet.id)
-print retweet_ids
-#Get the profiles from the ids
-
+for i in retweet_ids:
+    retweeters = api.get_user(screen_name=i.author.screen_name)
+    #followers = api.followers(screen_name=i.author.screen_name)
+    #Check in retweeters for followers
+    temp = i.author.screen_name
+    followers = api.followers(screen_name=temp)
+    for j in followers:
+        print followers
+        
 
 
 
