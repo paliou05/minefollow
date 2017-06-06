@@ -18,13 +18,26 @@ original_tweet = api.get_status(retweet_id)
 #Get the retweeted screen_names
 retweet_ids = api.retweets(original_tweet.id)
 for i in retweet_ids:
-    retweeters = api.get_user(screen_name=i.author.screen_name)
-    #followers = api.followers(screen_name=i.author.screen_name)
+    
+    retweeters = i.author.screen_name
+    print retweeters
+    users_ids = api.get_user(screen_name=retweeters)
+    print users_ids.id
     #Check in retweeters for followers
-    temp = i.author.screen_name
-    followers = api.followers(screen_name=temp)
-    for j in followers:
-        print followers
+    
+    followers = api.followers(screen_name=retweeters)
+    status = followers[0]
+    
+    follower_ids = status[u'id']
+    follower_ids.encode('utf-8')
+    follower_ids.decode('unicode')
+    print follower_ids
+    """for j in followers:
+        if followers.id==users_ids.id:
+            print "its a match"
+        else:
+            print "no match" """
+
         
 
 
