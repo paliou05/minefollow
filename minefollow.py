@@ -26,17 +26,19 @@ for i in retweet_ids:
     #Check in retweeters for followers
     
     followers = api.followers(screen_name=retweeters)
-    status = followers[0]
+    print len(followers)
+    for f in range(len(followers)):
+        status = followers[f]
     
-    follower_ids = status[u'id']
-    follower_ids.encode('utf-8')
-    follower_ids.decode('unicode')
-    print follower_ids
-    """for j in followers:
-        if followers.id==users_ids.id:
-            print "its a match"
-        else:
-            print "no match" """
+        follower_ids = status.id
+
+        print follower_ids
+        for  j in retweet_ids:
+            if follower_ids == j:
+                print "its a match!!!!!!!!!!!!!!!!"
+            else:
+                print "no match"
+
 
         
 
